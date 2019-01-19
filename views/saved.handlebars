@@ -1,0 +1,39 @@
+<div class="container">
+
+<div class="col-md-12 jumbotron">
+    <div class="text-center">
+        <h2> Saved Articles</h2>
+    </div>
+</div>
+
+<div>
+    {{#if article}}
+    {{#each article}}
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text">{{this.summary}}</p>
+        <a href={{this.link}} class="card-link">{{this.link}}</a>
+        <br>
+
+        <button type="button" class="btn btn-primary addnote" data-toggle="modal" data-target="#noteModal{{this._id}}" data-id={{this._id}}>Add a note</button> 
+        <button type="button" class="btn btn-primary delete" data-id={{this._id}}>Delete</button>
+
+      </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h3> No saved articles </h3>
+      </div>
+    </div>
+{{/if}}
+  </div>
+
+</div>
+
+{{#each article}}
+{{> notes-modal}}
+{{/each}}
